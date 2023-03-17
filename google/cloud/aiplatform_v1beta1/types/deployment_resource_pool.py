@@ -32,21 +32,21 @@ __protobuf__ = proto.module(
 
 
 class DeploymentResourcePool(proto.Message):
-    r"""A description of resources that can be shared by multiple
+    """A description of resources that can be shared by multiple
+
     DeployedModels, whose underlying specification consists of a
     DedicatedResources.
 
     Attributes:
-        name (str):
-            Output only. The resource name of the
-            DeploymentResourcePool. Format:
+        name (str): Output only. The resource name of the DeploymentResourcePool.
+          Format:
             ``projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}``
-        dedicated_resources (google.cloud.aiplatform_v1beta1.types.DedicatedResources):
-            Required. The underlying DedicatedResources
-            that the DeploymentResourcePool uses.
-        create_time (google.protobuf.timestamp_pb2.Timestamp):
-            Output only. Timestamp when this
-            DeploymentResourcePool was created.
+            dedicated_resources
+            (google.cloud.aiplatform_v1beta1.types.DedicatedResources): Required.
+            The underlying DedicatedResources that the DeploymentResourcePool
+            uses.
+        create_time (google.protobuf.timestamp_pb2.Timestamp): Output only.
+          Timestamp when this DeploymentResourcePool was created.
     """
 
     name: str = proto.Field(

@@ -25,7 +25,10 @@ from typing import (
 )
 
 from google.cloud.aiplatform_v1beta1.types import deployment_resource_pool
-from google.cloud.aiplatform_v1beta1.types import deployment_resource_pool_service
+from google.cloud.aiplatform_v1beta1.types import (
+    deployment_resource_pool_service,
+)
+from google.cloud.aiplatform_v1beta1.types import deployed_model_ref
 from google.cloud.aiplatform_v1beta1.types import endpoint
 
 
@@ -236,9 +239,9 @@ class QueryDeployedModelsPager:
             self._response = self._method(self._request, metadata=self._metadata)
             yield self._response
 
-    def __iter__(self) -> Iterator[endpoint.DeployedModel]:
+    def __iter__(self) -> Iterator[deployed_model_ref.DeployedModelRef]:
         for page in self.pages:
-            yield from page.deployed_models
+            yield from page.deployed_model_refs
 
     def __repr__(self) -> str:
         return "{0}<{1!r}>".format(self.__class__.__name__, self._response)

@@ -69,6 +69,10 @@ class Logger:
         self._logger = logging.getLogger(name)
         self._logger.setLevel(logging.INFO)
 
+        if self._logger.handlers:
+            # Avoid writing duplicate logs if the logger is created twice.
+            return
+
         handler = logging.StreamHandler(sys.stdout)
         handler.setLevel(logging.INFO)
 

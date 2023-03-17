@@ -154,7 +154,7 @@ class Prediction(NamedTuple):
     explanations: Optional[Sequence[gca_explanation_compat.Explanation]] = None
 
 
-class Endpoint(base.VertexAiResourceNounWithFutureManager):
+class Endpoint(base.VertexAiResourceNounWithFutureManager, base.PreviewMixin):
 
     client_class = utils.EndpointClientWithOverride
     _resource_noun = "endpoints"
@@ -163,6 +163,14 @@ class Endpoint(base.VertexAiResourceNounWithFutureManager):
     _delete_method = "delete_endpoint"
     _parse_resource_name_method = "parse_endpoint_path"
     _format_resource_name_method = "endpoint_path"
+
+    @classmethod
+    @property
+    def _preview_class(self):
+        """Endpoint class with preview features enabled."""
+        from google.cloud.aiplatform.preview import models as preview_models
+
+        return preview_models.Endpoint
 
     def __init__(
         self,
@@ -2420,7 +2428,7 @@ class PrivateEndpoint(Endpoint):
         super().delete(force=False, sync=sync)
 
 
-class Model(base.VertexAiResourceNounWithFutureManager):
+class Model(base.VertexAiResourceNounWithFutureManager, base.PreviewMixin):
 
     client_class = utils.ModelClientWithOverride
     _resource_noun = "models"
@@ -2429,6 +2437,14 @@ class Model(base.VertexAiResourceNounWithFutureManager):
     _delete_method = "delete_model"
     _parse_resource_name_method = "parse_model_path"
     _format_resource_name_method = "model_path"
+
+    @classmethod
+    @property
+    def _preview_class(self):
+        """Model class with preview features enabled."""
+        from google.cloud.aiplatform.preview import models as preview_models
+
+        return preview_models.Model
 
     @property
     def uri(self) -> Optional[str]:
@@ -2629,6 +2645,22 @@ class Model(base.VertexAiResourceNounWithFutureManager):
         """The registry of model versions associated with this
         Model instance."""
         return self._registry
+
+    @property
+    def preview(self):
+        """Enables preview features for this Model resource."""
+        from google.cloud.aiplatform.preview import models as preview_models
+
+        if not hasattr(self, "_preview_instance"):
+            self._preview_instance = preview_models.Model(
+                model_name=self.resource_name,
+                project=self.project,
+                location=self.location,
+                credentials=self.credentials,
+                version=self.version_id,
+            )
+
+        return self._preview_instance
 
     def __init__(
         self,

@@ -54,6 +54,7 @@ from google.cloud.aiplatform_v1beta1.services.deployment_resource_pool_service i
     transports,
 )
 from google.cloud.aiplatform_v1beta1.types import accelerator_type
+from google.cloud.aiplatform_v1beta1.types import deployed_model_ref
 from google.cloud.aiplatform_v1beta1.types import deployment_resource_pool
 from google.cloud.aiplatform_v1beta1.types import (
     deployment_resource_pool as gca_deployment_resource_pool,
@@ -2271,27 +2272,27 @@ def test_query_deployed_models_pager(transport_name: str = "grpc"):
         # Set the response to a series of pages.
         call.side_effect = (
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
                 ],
                 next_page_token="abc",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[],
+                deployed_model_refs=[],
                 next_page_token="def",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
                 ],
                 next_page_token="ghi",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
                 ],
             ),
             RuntimeError,
@@ -2309,7 +2310,7 @@ def test_query_deployed_models_pager(transport_name: str = "grpc"):
 
         results = list(pager)
         assert len(results) == 6
-        assert all(isinstance(i, endpoint.DeployedModel) for i in results)
+        assert all(isinstance(i, deployed_model_ref.DeployedModelRef) for i in results)
 
 
 def test_query_deployed_models_pages(transport_name: str = "grpc"):
@@ -2325,27 +2326,27 @@ def test_query_deployed_models_pages(transport_name: str = "grpc"):
         # Set the response to a series of pages.
         call.side_effect = (
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
                 ],
                 next_page_token="abc",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[],
+                deployed_model_refs=[],
                 next_page_token="def",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
                 ],
                 next_page_token="ghi",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
                 ],
             ),
             RuntimeError,
@@ -2370,27 +2371,27 @@ async def test_query_deployed_models_async_pager():
         # Set the response to a series of pages.
         call.side_effect = (
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
                 ],
                 next_page_token="abc",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[],
+                deployed_model_refs=[],
                 next_page_token="def",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
                 ],
                 next_page_token="ghi",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
                 ],
             ),
             RuntimeError,
@@ -2404,7 +2405,7 @@ async def test_query_deployed_models_async_pager():
             responses.append(response)
 
         assert len(responses) == 6
-        assert all(isinstance(i, endpoint.DeployedModel) for i in responses)
+        assert all(isinstance(i, deployed_model_ref.DeployedModelRef) for i in responses)
 
 
 @pytest.mark.asyncio
@@ -2422,27 +2423,27 @@ async def test_query_deployed_models_async_pages():
         # Set the response to a series of pages.
         call.side_effect = (
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
                 ],
                 next_page_token="abc",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[],
+                deployed_model_refs=[],
                 next_page_token="def",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
                 ],
                 next_page_token="ghi",
             ),
             deployment_resource_pool_service.QueryDeployedModelsResponse(
-                deployed_models=[
-                    endpoint.DeployedModel(),
-                    endpoint.DeployedModel(),
+                deployed_model_refs=[
+                    deployed_model_ref.DeployedModelRef(),
+                    deployed_model_ref.DeployedModelRef(),
                 ],
             ),
             RuntimeError,
